@@ -1,0 +1,8 @@
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+.test-postgres/
+INTERVIEW_WALKTHROUGH.md
+PROJECT_LEARNING_GUIDE.md

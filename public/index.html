@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Marks Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <p class="eyebrow"><span class="brand-mark" aria-hidden="true">M</span> MARKBOOK / CLASSROOM TOOLS</p>
+      <h1>Student Marks Calculator</h1>
+      <p>Add marks, check results, and see how your class is doing.</p>
+    </header>
+    <p id="server-error" class="server-error" role="alert" hidden></p>
+
+    <section class="card" aria-labelledby="add-heading">
+      <h2 id="add-heading">Add a student</h2>
+      <p class="hint">All fields are required. Enter whole-number marks from 0 to 100.</p>
+      <form id="student-form" novalidate>
+        <div class="fields">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="e.g. Asha" required aria-describedby="name-error">
+            <p class="error" id="name-error"></p>
+          </div>
+          <div class="field">
+            <label for="english">English</label>
+            <input id="english" name="english" type="number" min="0" max="100" step="1" required aria-describedby="english-error">
+            <p class="error" id="english-error"></p>
+          </div>
+          <div class="field">
+            <label for="maths">Maths</label>
+            <input id="maths" name="maths" type="number" min="0" max="100" step="1" required aria-describedby="maths-error">
+            <p class="error" id="maths-error"></p>
+          </div>
+          <div class="field">
+            <label for="science">Science</label>
+            <input id="science" name="science" type="number" min="0" max="100" step="1" required aria-describedby="science-error">
+            <p class="error" id="science-error"></p>
+          </div>
+        </div>
+        <button type="submit" class="primary">Add Student</button>
+        <p id="form-message" class="hint" role="status"></p>
+      </form>
+    </section>
+
+    <section class="statistics" aria-label="Class statistics" aria-live="polite">
+      <div class="card stat"><span>Total students</span><strong id="student-count">0</strong><p>Everyone in your class</p></div>
+      <div class="card stat"><span>Class average</span><strong id="class-average">—</strong><p>Across all three subjects</p></div>
+    </section>
+
+    <section class="card" aria-labelledby="results-heading">
+      <div class="results-header">
+        <h2 id="results-heading">Student results</h2>
+        <label class="filter"><input id="passing-filter" type="checkbox"> Show Passing Students Only</label>
+      </div>
+      <p class="hint">Gold rows show the highest total, including ties. Statistics always include every student.</p>
+      <div class="table-wrapper" role="region" aria-label="Student results table" tabindex="0">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">English</th>
+              <th scope="col">Maths</th>
+              <th scope="col">Science</th>
+              <th scope="col">Total</th>
+              <th scope="col">Average %</th>
+              <th scope="col">Status</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody id="student-rows"></tbody>
+        </table>
+      </div>
+      <p class="hint">Pass rule: at least 40 marks in each subject.</p>
+    </section>
+  </main>
+</body>
+</html>
